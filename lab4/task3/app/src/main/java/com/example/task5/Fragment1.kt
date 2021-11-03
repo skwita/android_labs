@@ -15,14 +15,6 @@ class Fragment1 : Fragment() {
         binding.bnToSecond.setOnClickListener {
             navController.navigate(R.id.action_fragment1_to_fragment2)
         }
-        binding.navView.setOnNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.to_about -> {
-                    navController.navigate(R.id.global_about)
-                }
-            }
-            false
-        }
         return binding.root
     }
 }

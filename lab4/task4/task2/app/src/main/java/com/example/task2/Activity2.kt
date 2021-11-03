@@ -16,8 +16,9 @@ class Activity2 : AppCompatActivity() {
         binding = Activity2Binding.inflate(layoutInflater)
         binding.bnToFirst.setOnClickListener { onButtonToFirstClicked() }
         binding.bnToThird.setOnClickListener { onButtonToThirdClicked() }
-        binding.navView.setOnNavigationItemSelectedListener { onNavAboutClicked(it) }
+        binding.navView.setOnItemSelectedListener { onNavAboutClicked(it) }
         setContentView(binding.root)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun onButtonToFirstClicked(){

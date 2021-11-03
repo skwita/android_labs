@@ -9,7 +9,6 @@ import androidx.navigation.ui.*
 import com.example.myapplication.databinding.ActivityMainBinding
 open class MainActivity : AppCompatActivity() {
 
-
     private lateinit var binding: ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
 

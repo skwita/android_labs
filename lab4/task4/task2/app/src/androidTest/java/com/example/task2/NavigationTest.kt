@@ -7,6 +7,7 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -176,5 +177,52 @@ class NavigationTest {
         activityRule.scenario.onActivity { activity ->
             activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
+    }
+    @Test
+    fun checkUpNavigation() {
+        onView(withId(R.id.fragment1)).check(matches(isDisplayed()))
+        onView(withId(R.id.bnToSecond)).check(matches(isDisplayed()))
+
+        openAbout()
+
+        onView(withId(R.id.activity_about)).check(matches(isDisplayed()))
+        onView(withId(R.id.tvAbout)).check(matches(isDisplayed()))
+
+        onView(ViewMatchers.withContentDescription("Navigate up")).perform(click())
+
+        onView(withId(R.id.bnToSecond)).perform(click())
+
+        onView(withId(R.id.fragment2)).check(matches(isDisplayed()))
+        onView(withId(R.id.bnToFirst)).check(matches(isDisplayed()))
+        onView(withId(R.id.bnToThird)).check(matches(isDisplayed()))
+
+
+        openAbout()
+
+        onView(withId(R.id.activity_about)).check(matches(isDisplayed()))
+        onView(withId(R.id.tvAbout)).check(matches(isDisplayed()))
+
+        onView(ViewMatchers.withContentDescription("Navigate up")).perform(click())
+
+        onView(withId(R.id.bnToThird)).perform(click())
+
+
+        onView(withId(R.id.fragment3)).check(matches(isDisplayed()))
+        onView(withId(R.id.bnToFirst)).check(matches(isDisplayed()))
+        onView(withId(R.id.bnToSecond)).check(matches(isDisplayed()))
+
+        openAbout()
+
+        onView(withId(R.id.activity_about)).check(matches(isDisplayed()))
+        onView(withId(R.id.tvAbout)).check(matches(isDisplayed()))
+
+        onView(ViewMatchers.withContentDescription("Navigate up")).perform(click())
+        onView(withId(R.id.fragment3)).check(matches(isDisplayed()))
+
+        onView(ViewMatchers.withContentDescription("Navigate up")).perform(click())
+        onView(withId(R.id.fragment2)).check(matches(isDisplayed()))
+
+        onView(ViewMatchers.withContentDescription("Navigate up")).perform(click())
+        onView(withId(R.id.fragment1)).check(matches(isDisplayed()))
     }
 }

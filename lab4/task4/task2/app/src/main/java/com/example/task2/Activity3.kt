@@ -5,6 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import com.example.task2.databinding.Activity3Binding
+import androidx.core.app.NavUtils
+
+
+
 
 class Activity3 : AppCompatActivity() {
 
@@ -15,8 +19,9 @@ class Activity3 : AppCompatActivity() {
         binding = Activity3Binding.inflate(layoutInflater)
         binding.bnToFirst.setOnClickListener { onButtonToFirstClicked() }
         binding.bnToSecond.setOnClickListener { onButtonToSecondClicked() }
-        binding.navView.setOnNavigationItemSelectedListener { onNavAboutClicked(it) }
+        binding.navView.setOnItemSelectedListener { onNavAboutClicked(it) }
         setContentView(binding.root)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun onButtonToFirstClicked() {

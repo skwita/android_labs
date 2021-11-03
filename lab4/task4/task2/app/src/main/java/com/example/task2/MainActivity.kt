@@ -14,8 +14,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = Activity1Binding.inflate(layoutInflater)
         binding.bnToSecond.setOnClickListener { onButtonToSecondClicked() }
-        binding.navView.setOnNavigationItemSelectedListener { onNavAboutClicked(it) }
+        binding.navView.setOnItemSelectedListener { onNavAboutClicked(it) }
         setContentView(binding.root)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun onButtonToSecondClicked() {
@@ -30,4 +31,5 @@ class MainActivity : AppCompatActivity() {
         }
         return false
     }
+
 }
