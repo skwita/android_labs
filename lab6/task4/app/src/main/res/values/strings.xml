@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">task4</string>
+    <string name="dogimage">DogImage</string>
+    <string name="download_a_perfect_dog_image">Download a perfect dog image</string>
+</resources>
