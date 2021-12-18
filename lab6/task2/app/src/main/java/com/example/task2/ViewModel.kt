@@ -10,7 +10,7 @@ import java.util.concurrent.Executors
 
 class MainActivityViewModel: ViewModel() {
     val bitmap: MutableLiveData<Bitmap> = MutableLiveData()
-    private val executorService: ExecutorService = Executors.newSingleThreadExecutor()
+    private val executorService: ExecutorService = MyApplication.executorService
 
     fun downloadDogImage() {
         executorService.execute {
@@ -20,10 +20,5 @@ class MainActivityViewModel: ViewModel() {
             val mIcon = BitmapFactory.decodeStream(newUrl.openConnection().getInputStream())
             bitmap.postValue(mIcon)
         }
-    }
-
-    override fun onCleared() {
-        executorService.shutdown()
-        super.onCleared()
     }
 }

@@ -42,7 +42,6 @@ class MainActivity : AppCompatActivity() {
                     }
                 } catch (e: InterruptedException) {
                     Log.i("thread","${Thread.currentThread()} has stopped")
-                    Thread.currentThread().interrupt()
                 }
             }
         }
